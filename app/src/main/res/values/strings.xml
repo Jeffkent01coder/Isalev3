@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Isale v3</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="loading">Loading ...</string>
+    <string-array name="natureBusiness">
+        <item>Retail Businesses</item>
+        <item>Service-Based Businesses</item>
+        <item>Restaurants and Food Services</item>
+        <item>Hospitality and Tourism</item>
+        <item>Healthcare and Medical Services</item>
+        <item>Manufacturing and Production</item>
+        <item>Technology and Software</item>
+        <item>Real Estate and Property</item>
+        <item>Entertainment and Media</item>
+        <item>Education and Training</item>
+        <item>Construction and Home Improvement</item>
+        <item>Automotive</item>
+        <item>Agriculture and Farming</item>
+        <item>Finance and Banking</item>
+        <item>Energy and Utilities</item>
+        <item>Nonprofit Organizations</item>
+        <item>Transportation and Logistics</item>
+        <item>Legal Services</item>
+        <item>Environmental and Conservation</item>
+        <item>E-commerce and Online Retail</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="selectTypeDevice">
+        <item>Stanbest Group PDQ Device</item>
+        <item>Smartphone or Other Android Device</item>
+    </string-array>
+
+    <string-array name="periodicalModes">
+        <item>Filter by Date</item>
+        <item>Filter by Sequence Number</item>
+    </string-array>
+
+    <string-array name="selectSource">
+        <item>Sales Representative</item>
+        <item>Internet Search</item>
+        <item>Social Media</item>
+        <item>Friend or Family</item>
+        <item>Advertisement</item>
+        <item>News Article</item>
+        <item>Email Newsletter</item>
+        <item>Blog Post</item>
+        <item>Attended an Event</item>
+        <item>YouTube Video</item>
+        <item>Podcast</item>
+        <item>Online Review</item>
+        <item>Word of Mouth</item>
+        <item>Other</item>
+    </string-array>
+</resources>

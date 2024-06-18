@@ -1,0 +1,1257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.auth.Register">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:elevation="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/logo_image"
+                android:layout_width="130dp"
+                android:layout_height="70dp"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/logo_black" />
+
+            <LinearLayout
+                android:id="@+id/lnSigninHelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="10dp"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/info_icon"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/info"
+                    app:tint="@color/md_theme_primary" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/segoe_ui"
+                    android:text="help"
+                    android:textColor="@color/md_theme_primary"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:id="@+id/back_arrow"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/navarrowleft" />
+
+            <TextView
+                android:id="@+id/txtRegistrationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="4dp"
+                android:layout_toEndOf="@+id/back_arrow"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="Registration"
+                android:textColor="@color/md_theme_primary"
+                android:textSize="21sp" />
+
+            <TextView
+                android:id="@+id/txtRegisterStepTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="Step 1/5"
+                android:textColor="@color/black"
+                android:textSize="21sp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="10dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lnRegisterStep1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="1. Company/Business Information"
+                    android:textColor="@color/md_theme_primary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Company/Business Name*"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegisterBusinessName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:fontFamily="@font/segoe_ui"
+                    android:inputType="textCapSentences"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textColorHint="@color/secondaryTextColor"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Nature of Business"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <Spinner
+                    android:id="@+id/spnRegisterNature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:entries="@array/natureBusiness"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="KRA PIN*"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegisterBusinessPin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:fontFamily="@font/segoe_ui"
+                    android:inputType="textCapCharacters"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textColorHint="@color/secondaryTextColor"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Address"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegisterBusinessAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:fontFamily="@font/segoe_ui"
+                    android:inputType="textPostalAddress"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textColorHint="@color/secondaryTextColor"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Mobile No."
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegisterBusinessMobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:fontFamily="@font/segoe_ui"
+                    android:inputType="textCapCharacters"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textColorHint="@color/secondaryTextColor"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Email"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegisterBusinessEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:fontFamily="@font/segoe_ui"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textColorHint="@color/secondaryTextColor"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRegisterNext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/accentColor"
+                    android:fontFamily="@font/samsungsans_medium"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp"
+                    android:text="Next"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    app:cornerRadius="6dp"
+                    app:elevation="0dp" />
+            </LinearLayout>
+            <!--            Step 2-->
+
+            <LinearLayout
+                android:id="@+id/lnRegisterStep2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="2. Owner/Director/Legal Representative Details"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Owner Name*"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegisterBusinessOwnerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:fontFamily="@font/segoe_ui"
+                    android:inputType="textCapSentences"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textColorHint="@color/secondaryTextColor"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Mobile No.*"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegisterBusinessOwnerMobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:fontFamily="@font/segoe_ui"
+                    android:inputType="textCapCharacters"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textColorHint="@color/secondaryTextColor"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Email"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegisterBusinessOwnerEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:fontFamily="@font/segoe_ui"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textColorHint="@color/secondaryTextColor"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Username"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegisterBusinessOwnerUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:fontFamily="@font/segoe_ui"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textColorHint="@color/secondaryTextColor"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Password"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegisterBusinessOwnerPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:fontFamily="@font/segoe_ui"
+                    android:inputType="textPassword"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textColorHint="@color/secondaryTextColor"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="ID/Passport No.*"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegisterBusinessOwnerPassport"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:fontFamily="@font/segoe_ui"
+                    android:inputType="textCapCharacters"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textColorHint="@color/secondaryTextColor"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Postion"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegisterBusinessOwnerPosition"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:fontFamily="@font/segoe_ui"
+                    android:inputType="textCapSentences"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textColorHint="@color/secondaryTextColor"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Address"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegisterBusinessOwnerAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:fontFamily="@font/segoe_ui"
+                    android:inputType="textPostalAddress"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textColorHint="@color/secondaryTextColor"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnRegisterPrevious2"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp"
+                        android:text="Previous"
+                        android:textAllCaps="false"
+                        android:textSize="14sp"
+                        app:cornerRadius="4dp"
+                        app:strokeColor="@color/accentColor" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnRegisterNext2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/accentColor"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp"
+                        android:textColor="@color/white"
+                        android:text="Next"
+                        android:textAllCaps="false"
+                        android:textSize="16sp"
+                        app:cornerRadius="6dp"
+                        app:elevation="0dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnRegisterStep3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="3. Select Type of Device"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+
+                <Spinner
+                    android:id="@+id/spnRegisterType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_text_field"
+                    android:entries="@array/selectTypeDevice"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnRegisterPrevious3"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp"
+                        android:text="Previous"
+                        android:textAllCaps="false"
+                        android:textSize="14sp"
+                        app:cornerRadius="4dp"
+                        app:strokeColor="@color/accentColor" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnRegisterNext3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/accentColor"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:paddingTop="14dp"
+                        android:textColor="@color/white"
+                        android:paddingBottom="14dp"
+                        android:text="Next"
+                        android:textAllCaps="false"
+                        android:textSize="16sp"
+                        app:cornerRadius="6dp"
+                        app:elevation="0dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnRegisterStep4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="4. Taxpayer eTIMS commitment"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/check_mark" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:padding="5dp"
+                        android:text="I hereby confirm that I am ready to receive the eTIMS software and I shall use it properly."
+                        android:textColor="@color/black"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/check_mark" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:padding="5dp"
+                        android:text="I will not proceed with formatting/resetting the device in which the eTIMS is installed until I get written authorization from KRA upon an officially submitted request"
+                        android:textColor="@color/black"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/check_mark" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:padding="5dp"
+                        android:text="I understand that this computing device cannot be formatted without KRA written authorization. Otherwise, this action will be a violation of provisions of the Tax Procedures Act 2015, and VAT Act 2013 and penalties provided in the same laws will be applicable"
+                        android:textColor="@color/black"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnRegisterPrevious4"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp"
+                        android:text="Previous"
+                        android:textAllCaps="false"
+                        android:textSize="14sp"
+                        app:cornerRadius="4dp"
+                        app:strokeColor="@color/accentColor" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnRegisterNext4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/accentColor"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp"
+                        android:textColor="@color/white"
+                        android:text="Next"
+                        android:textAllCaps="false"
+                        android:textSize="16sp"
+                        app:cornerRadius="6dp"
+                        app:elevation="0dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnRegisterStep5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="5. Choose Type of License"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="License Types"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:orientation="horizontal"
+                    android:paddingStart="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="2dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autoLicenseTypes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toStartOf="@+id/imgAutoLicenseTypes"
+                        android:fontFamily="@font/segoe_ui"
+                        android:hint="Search" />
+
+                    <ImageView
+                        android:id="@+id/imgAutoLicenseTypes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="38dp"
+                        android:maxHeight="38dp"
+                        android:src="@drawable/baseline_keyboard_arrow_down_24" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnLicenceBreakdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtSignInLicenseCost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/segoe_ui_bold"
+                        android:text="License Cost: KES 1.00"
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:text="Enter Number of Licenses to add:"
+                        android:textColor="@color/textGray"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/edtSignInLicenseNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter number"
+                        android:inputType="number"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="20dp"
+                        android:text="1"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/txtSignInLicenseCostTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/segoe_ui_bold"
+                        android:text="Total: KES 1.00"
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="6. Where did you here about us?"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Select Source*"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <Spinner
+                    android:id="@+id/spnRegisterSource"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:entries="@array/selectSource"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/txtSignSalesAgentTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Sales Agents"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/rlAutoSalesAgent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_text_field"
+                    android:orientation="horizontal"
+                    android:paddingStart="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="2dp"
+                    android:visibility="gone">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autoSalesAgent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toStartOf="@+id/imgAutoSalesAgent"
+                        android:fontFamily="@font/segoe_ui"
+                        android:hint="Search" />
+
+                    <ImageView
+                        android:id="@+id/imgAutoSalesAgent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="38dp"
+                        android:maxHeight="38dp"
+                        android:src="@drawable/baseline_keyboard_arrow_down_24" />
+
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnRegisterPrevious5"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp"
+                        android:text="Previous"
+                        android:textAllCaps="false"
+                        android:textSize="14sp"
+                        app:cornerRadius="4dp"
+                        app:strokeColor="@color/accentColor" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnRegisterNext5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/accentColor"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp"
+                        android:text="Submit Registration"
+                        android:textAllCaps="false"
+                        android:textSize="16sp"
+                        app:cornerRadius="6dp"
+                        app:elevation="0dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnRegisterStep6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/samsungsans_medium"
+                    android:paddingVertical="10dp"
+                    android:text="Select Payment Method"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:gravity="center|center_horizontal"
+                        android:paddingTop="5dp"
+                        android:text="M-Pesa"
+                        android:textColor="@color/black"
+                        android:textSize="17sp" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="end"
+                        android:src="@drawable/check_mark" />
+                </RelativeLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRegisterNext6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@color/accentColor"
+                    android:fontFamily="@font/samsungsans_medium"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp"
+                    android:textColor="@color/white"
+                    android:text="Next"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    app:cornerRadius="6dp"
+                    app:elevation="0dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnRegisterStep7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/samsungsans_medium"
+                    android:paddingVertical="10dp"
+                    android:text="Payment Details"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/samsungsans_medium"
+                    android:paddingVertical="5dp"
+                    android:text="To finalize your registration, kindly make payment to:"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:paddingVertical="5dp"
+                        android:text="Paybill No."
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtPaymentPaybill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:paddingVertical="5dp"
+                        android:text="4014787"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:paddingVertical="5dp"
+                        android:text="Account No."
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtPaymentAccount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:paddingVertical="5dp"
+                        android:text="123"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:paddingVertical="5dp"
+                        android:text="Amount: KES"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtPaymentAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/samsungsans_medium"
+                        android:paddingVertical="5dp"
+                        android:text="1.00"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/samsungsans_medium"
+                    android:paddingVertical="5dp"
+                    android:text="Note:"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/samsungsans_medium"
+                    android:paddingVertical="5dp"
+                    android:text="Once payment is made you will receive an SMS
+with the license key. A copy of the license key and
+user credentials will also be sent to your email
+(Check both your inbox and Spam)."
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/samsungsans_medium"
+                    android:paddingVertical="5dp"
+                    android:text="Once you receive your license key. Click below"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRegisterNext7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@color/accentColor"
+                    android:fontFamily="@font/samsungsans_medium"
+                    android:paddingTop="14dp"
+                    android:textColor="@color/white"
+                    android:paddingBottom="14dp"
+                    android:text="Click to enter iSale Serial No."
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    app:cornerRadius="6dp"
+                    app:elevation="0dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

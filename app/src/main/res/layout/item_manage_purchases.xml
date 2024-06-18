@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0.5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="0.5dp"
+        android:layout_marginBottom="5dp"
+        android:elevation="6dp"
+        app:cardCornerRadius="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="6dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtManagePurchasesBusiness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="1. Josh &amp; Kamau Co. Ltd"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/txtManagePurchasesSupplierPin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe_ui"
+                android:text="Supplier PIN: P051110927"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/txtManagePurchasesDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe_ui"
+                android:text="Purchase Date: 27/04/2023"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnManagePurchasesView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/samsungsans_medium"
+                    android:gravity="center"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="view"
+                    android:textAllCaps="false"
+                    android:textColor="@color/accentColor"
+                    android:textSize="14sp"
+                    app:cornerRadius="6dp"
+                    app:elevation="0dp"
+                    app:strokeColor="@color/accentColor"
+                    app:strokeWidth="1dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnManagePurchasesUpdate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/accentColor"
+                    android:fontFamily="@font/samsungsans_medium"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="update_stock"
+                    android:textAllCaps="false"
+                    android:textSize="14sp"
+                    app:cornerRadius="6dp"
+                    app:elevation="0dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

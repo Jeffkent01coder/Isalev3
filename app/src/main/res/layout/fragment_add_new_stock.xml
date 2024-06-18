@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.stock.AddNewStockFragment">
+
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/md_theme_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:titleTextAppearance="@style/ActionbarStyle">
+
+            <TextView
+                android:id="@+id/toolbarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Items"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <LinearLayout
+                android:id="@+id/lnAddItemHelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true">
+
+                <ImageView
+                    android:id="@+id/info_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/baseline_info_outline_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/segoe_ui"
+                    android:text="help"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:text="Add Product/Service"
+            android:textColor="@color/accentColor"
+            android:textSize="16sp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="10dp"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Item Classification*"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/custom_text_field"
+                    android:orientation="horizontal"
+                    android:paddingStart="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="2dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autoClassification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/segoe_ui"
+                        android:layout_toStartOf="@+id/imgAutoClassification"
+                        android:hint="Search" />
+
+                    <ImageView
+                        android:id="@+id/imgAutoClassification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="38dp"
+                        android:maxHeight="38dp"
+                        android:src="@drawable/ic_action_chevron_down"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Product Type*"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/custom_text_field"
+                    android:orientation="horizontal"
+                    android:paddingStart="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="2dp">
+
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autoProductType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe_ui"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toStartOf="@+id/imgAutoProductType"
+                        android:hint="Search" />
+
+                    <ImageView
+                        android:id="@+id/imgAutoProductType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="38dp"
+                        android:maxHeight="38dp"
+                        android:src="@drawable/ic_action_chevron_down"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Country of Origin*"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/custom_text_field"
+                    android:orientation="horizontal"
+                    android:paddingStart="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="2dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autoCountry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe_ui"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toStartOf="@+id/imgAutoCountry"
+                        android:hint="Search" />
+
+                    <ImageView
+                        android:id="@+id/imgAutoCountry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="38dp"
+                        android:maxHeight="38dp"
+                        android:src="@drawable/ic_action_chevron_down"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Packaging Unit*"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/custom_text_field"
+                    android:orientation="horizontal"
+                    android:paddingStart="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="2dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autoPackaging"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe_ui"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toStartOf="@+id/imgAutoPackaging"
+                        android:hint="Search" />
+
+                    <ImageView
+                        android:id="@+id/imgAutoPackaging"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="38dp"
+                        android:maxHeight="38dp"
+                        android:src="@drawable/ic_action_chevron_down"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Quantity Unit*"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/custom_text_field"
+                    android:orientation="horizontal"
+                    android:paddingStart="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="2dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autoQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe_ui"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toStartOf="@+id/imgAutoQuantity"
+                        android:hint="Search" />
+
+                    <ImageView
+                        android:id="@+id/imgAutoQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="38dp"
+                        android:maxHeight="38dp"
+                        android:src="@drawable/ic_action_chevron_down"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Tax Type*"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/custom_text_field"
+                    android:orientation="horizontal"
+                    android:paddingStart="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="2dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autoTax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe_ui"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toStartOf="@+id/imgAutoTax"
+                        android:hint="Search" />
+
+                    <ImageView
+                        android:id="@+id/imgAutoTax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="38dp"
+                        android:maxHeight="38dp"
+                        android:src="@drawable/ic_action_chevron_down"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe_ui_bold"
+                        android:text="Item Name*"
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:fontFamily="@font/segoe_ui"
+                        android:text="(As it should appear on the receipt)"
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/custom_text_field"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtAddItemName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/segoe_ui"
+                        android:hint="Enter name"
+                        android:inputType="textCapSentences"
+                        android:textColor="@color/secondaryTextColor"
+                        android:textColorHint="@color/secondaryTextColor"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Item PoS Category*"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/custom_text_field"
+                    android:orientation="horizontal"
+                    android:paddingStart="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="2dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autoCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe_ui"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toStartOf="@+id/imgAutoCategory"
+                        android:hint="Search" />
+
+                    <ImageView
+                        android:id="@+id/imgAutoCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="38dp"
+                        android:maxHeight="38dp"
+                        android:src="@drawable/ic_action_chevron_down"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Barcode (Optional)"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/custom_text_field"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtAddItemBarcode"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/segoe_ui"
+                        android:hint="Enter barcode"
+                        android:inputType="textCapCharacters"
+                        android:textColor="@color/secondaryTextColor"
+                        android:textColorHint="@color/secondaryTextColor"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Batch Number. (Optional)"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/custom_text_field"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtAddItemBatch"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/segoe_ui"
+                        android:hint="Enter batch number"
+                        android:inputType="textCapCharacters"
+                        android:textColor="@color/secondaryTextColor"
+                        android:textColorHint="@color/secondaryTextColor"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Price (Ksh)*"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/custom_text_field"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtAddItemPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/segoe_ui"
+                        android:hint="0.0"
+                        android:text="0"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/secondaryTextColor"
+                        android:textColorHint="@color/secondaryTextColor"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                </RelativeLayout>
+
+                <Switch
+                    android:id="@+id/switchAddItemInsurance"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/segoe_ui"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Is Insurance Applicable?"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Declare Initial Stock"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="2"
+                        android:background="@drawable/custom_text_field"
+                        android:paddingStart="10dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="8dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtAddItemStock"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerInParent="true"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/segoe_ui"
+                            android:hint="0.0"
+                            android:text="0"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/secondaryTextColor"
+                            android:textColorHint="@color/secondaryTextColor"
+                            android:textSize="16sp"
+                            android:visibility="visible" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/add_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/accentColor"
+                    android:fontFamily="@font/samsungsans_medium"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:text="Add"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    app:cornerRadius="6dp"
+                    app:elevation="0dp" />
+
+            </LinearLayout>
+
+            </TableLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</FrameLayout>

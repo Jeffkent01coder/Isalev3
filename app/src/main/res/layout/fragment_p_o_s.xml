@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.home.homeFragments.POSFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/md_theme_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:titleTextAppearance="@style/ActionbarStyle">
+
+
+        <TextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Point of Sale"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/filter_layout"
+        android:orientation="horizontal">
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Filter by :"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:textSize="15sp"
+            android:layout_gravity="center"/>
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_marginStart="5dp"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+    <com.google.android.material.chip.ChipGroup
+        android:layout_width="match_parent"
+        app:chipSpacingHorizontal="4dp"
+        app:chipSpacingVertical="-10dp"
+        app:singleSelection="true"
+        android:layout_marginHorizontal="3dp"
+        android:id="@+id/categoriesChipGroup"
+        android:layout_height="wrap_content"/>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/checkout"
+        android:textStyle="bold"
+        android:textSize="15.5sp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        app:cornerRadius="10dp"
+        android:visibility="gone"
+        android:text="Checkout"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginVertical="5dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:id="@+id/items_in_stock_recyclerview"/>
+
+</LinearLayout>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/storeFragment"
+        android:name="com.jeff.isalev3.ui.home.homeFragments.StoreFragment"
+        android:label="fragment_store"
+        tools:layout="@layout/fragment_store" >
+        <action
+            android:id="@+id/action_storeFragment_to_addNewStockFragment"
+            app:destination="@id/addNewStockFragment" />
+        <action
+            android:id="@+id/action_storeFragment_to_adjustStockFragment"
+            app:destination="@id/adjustStockFragment" />
+        <action
+            android:id="@+id/action_storeFragment_to_currentStockFragment"
+            app:destination="@id/currentStockFragment" />
+        <action
+            android:id="@+id/action_storeFragment_to_stockMovementFragment"
+            app:destination="@id/stockMovementFragment" />
+        <action
+            android:id="@+id/action_storeFragment_to_manageImportsFragment"
+            app:destination="@id/manageImportsFragment" />
+        <action
+            android:id="@+id/action_storeFragment_to_managePurchasesFragment"
+            app:destination="@id/managePurchasesFragment" />
+        <action
+            android:id="@+id/action_storeFragment_to_stockCompositionFragment"
+            app:destination="@id/stockCompositionFragment" />
+        <action
+            android:id="@+id/action_storeFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewStockFragment"
+        android:name="com.jeff.isalev3.ui.home.stock.AddNewStockFragment"
+        android:label="fragment_add_new_stock"
+        tools:layout="@layout/fragment_add_new_stock" >
+        <action
+            android:id="@+id/action_addNewStockFragment_to_storeFragment"
+            app:destination="@id/storeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adjustStockFragment"
+        android:name="com.jeff.isalev3.ui.home.stock.AdjustStockFragment"
+        android:label="fragment_adjust_stock"
+        tools:layout="@layout/fragment_adjust_stock" >
+        <action
+            android:id="@+id/action_adjustStockFragment_to_storeFragment"
+            app:destination="@id/storeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/currentStockFragment"
+        android:name="com.jeff.isalev3.ui.home.stock.CurrentStockFragment"
+        android:label="fragment_current_stock"
+        tools:layout="@layout/fragment_current_stock" >
+        <action
+            android:id="@+id/action_currentStockFragment_to_storeFragment"
+            app:destination="@id/storeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/manageImportsFragment"
+        android:name="com.jeff.isalev3.ui.home.stock.ManageImportsFragment"
+        android:label="fragment_manage_imports"
+        tools:layout="@layout/fragment_manage_imports" >
+        <action
+            android:id="@+id/action_manageImportsFragment_to_storeFragment"
+            app:destination="@id/storeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/managePurchasesFragment"
+        android:name="com.jeff.isalev3.ui.home.stock.ManagePurchasesFragment"
+        android:label="fragment_manage_purchases"
+        tools:layout="@layout/fragment_manage_purchases" >
+        <action
+            android:id="@+id/action_managePurchasesFragment_to_storeFragment"
+            app:destination="@id/storeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stockCompositionFragment"
+        android:name="com.jeff.isalev3.ui.home.stock.StockCompositionFragment"
+        android:label="fragment_stock_composition"
+        tools:layout="@layout/fragment_stock_composition" >
+        <action
+            android:id="@+id/action_stockCompositionFragment_to_storeFragment"
+            app:destination="@id/storeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stockMovementFragment"
+        android:name="com.jeff.isalev3.ui.home.stock.StockMovementFragment"
+        android:label="fragment_stock_movement"
+        tools:layout="@layout/fragment_stock_movement" >
+        <action
+            android:id="@+id/action_stockMovementFragment_to_storeFragment"
+            app:destination="@id/storeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.jeff.isalev3.ui.home.homeFragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_invoicesFragment"
+            app:destination="@id/invoicesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_POSFragment"
+            app:destination="@id/POSFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_storeFragment"
+            app:destination="@id/storeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_customerFragment"
+            app:destination="@id/customerFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_reportsFragment"
+            app:destination="@id/reportsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/invoicesFragment"
+        android:name="com.jeff.isalev3.ui.home.homeFragments.InvoicesFragment"
+        android:label="fragment_invoices"
+        tools:layout="@layout/fragment_invoices" >
+        <action
+            android:id="@+id/action_invoicesFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/POSFragment"
+        android:name="com.jeff.isalev3.ui.home.homeFragments.POSFragment"
+        android:label="fragment_p_o_s"
+        tools:layout="@layout/fragment_p_o_s" >
+        <action
+            android:id="@+id/action_POSFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.jeff.isalev3.ui.moreMenu.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerFragment"
+        android:name="com.jeff.isalev3.ui.moreMenu.customers.CustomerFragment"
+        android:label="fragment_customer"
+        tools:layout="@layout/fragment_customer" >
+        <action
+            android:id="@+id/action_customerFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reportsFragment"
+        android:name="com.jeff.isalev3.ui.moreMenu.reports.ReportsFragment"
+        android:label="fragment_reports"
+        tools:layout="@layout/fragment_reports" >
+        <action
+            android:id="@+id/action_reportsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+</navigation>
