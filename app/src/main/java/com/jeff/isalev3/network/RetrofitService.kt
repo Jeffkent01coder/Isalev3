@@ -1,7 +1,9 @@
 package com.jeff.isalev3.network
 
 import com.jeff.isalev3.models.AuthParams
+import com.jeff.isalev3.models.GetSalesResponse
 import com.jeff.isalev3.models.LoginResponse
+import com.jeff.isalev3.models.getProfomaResponse
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import retrofit2.Retrofit
@@ -34,10 +36,10 @@ object RetrofitService {
 interface ApiService {
     @POST("auth/login")
     suspend fun login(@Body authParams: AuthParams): LoginResponse
-//    @GET("sales")
-//    suspend fun getSales(@Header("Authorization") token: String): getSalesResponse
-//    @GET("profoma")
-//    suspend fun getProfomas(@Header("Authorization") token: String): getProfomaResponse
+    @GET("sales")
+    suspend fun getSales(@Header("Authorization") token: String): GetSalesResponse
+    @GET("profoma")
+    suspend fun getProfomas(@Header("Authorization") token: String): getProfomaResponse
 //    @GET("items")
 //    suspend fun getItems(@Header("Authorization") token: String): ResponseBody
 
