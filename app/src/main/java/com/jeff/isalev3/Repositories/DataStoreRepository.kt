@@ -38,7 +38,7 @@ class DataStoreRepository(private val context: Context) {
     suspend fun getAccountData(): Flow<AccountData> {
         return context.dataStore.data.map { preferences ->
             AccountData(
-                username = preferences[USER_NAME]?:"",
+                username = preferences[USER_NAME] ?: "",
                 bearerToken = preferences[BEARER_TOKEN] ?: "",
                 tin = preferences[ISALE_TIN] ?: "",
                 name = preferences[ISALE_NAME] ?: "",
@@ -60,33 +60,33 @@ class DataStoreRepository(private val context: Context) {
             )
         }
     }
-    suspend fun writeToDataStore(d: LoginResponse, username: String):Boolean {
-        return withContext(Dispatchers.IO){
+
+    suspend fun writeToDataStore(d: LoginResponse, username: String): Boolean {
+        return withContext(Dispatchers.IO) {
             try {
-                context.dataStore.edit {preferences->
+                context.dataStore.edit { preferences ->
                     preferences[BEARER_TOKEN] = d.access_token.toString()
                     preferences[ISALE_TIN] = d.business?.pin.toString()
                     preferences[ISALE_NAME] = d.business?.taxprNm.toString()
-                    preferences[ISALE_BHFID] =d.business?.branch.toString()
-                    preferences[ISALE_SCU] =d.business?.sdcId.toString()
+                    preferences[ISALE_BHFID] = d.business?.branch.toString()
+                    preferences[ISALE_SCU] = d.business?.sdcId.toString()
                     preferences[ISALE_STREET] = d.business?.sctrNm.toString()
-                    preferences[ISALE_PROVINCE] =d.business?.prvncNm.toString()
+                    preferences[ISALE_PROVINCE] = d.business?.prvncNm.toString()
                     preferences[ISALE_EMAIL] = d.business?.email.toString()
                     preferences[ISALE_PHONE] = d.business?.phone.toString()
-                    preferences[ISALE_BHFNAME] =d.business?.bhfNm.toString()
+                    preferences[ISALE_BHFNAME] = d.business?.bhfNm.toString()
                     preferences[ISALE_DVC] = d.business?.dvcId.toString()
-                    preferences[ISALE_MRC] =d.business?.mrcNo.toString()
+                    preferences[ISALE_MRC] = d.business?.mrcNo.toString()
                     preferences[ISALE_MANAGER] = d.business?.mgrNm.toString()
-                    preferences[ISALE_MANAGER_PHONE] =d.business?.mgrTelNo.toString()
-                    preferences[ISALE_MANAGER_EMAIL] =d.business?.mgrEmail.toString()
-                    preferences[TOTAL_SALES] =d.stats?.totalSales.toString()
+                    preferences[ISALE_MANAGER_PHONE] = d.business?.mgrTelNo.toString()
+                    preferences[ISALE_MANAGER_EMAIL] = d.business?.mgrEmail.toString()
+                    preferences[TOTAL_SALES] = d.stats?.totalSales.toString()
                     preferences[NUMBER_OF_SALES] = d.stats?.numberOfSales.toString()
                     preferences[TOTAL_TAX] = d.stats?.totalTax.toString()
-                    preferences[USER_NAME]= username
+                    preferences[USER_NAME] = username
                 }
                 true
-            }
-            catch (e:Exception){
+            } catch (e: Exception) {
                 false
             }
         }
@@ -123,12 +123,13 @@ class DataStoreRepository(private val context: Context) {
                 instance ?: DataStoreRepository(context).also { instance = it }
             }
         }
+
         private const val USER_PREFERENCES_NAME = "isale_account_preferences"
     }
 }
 
 data class AccountData(
-    val username:String,
+    val username: String,
     val bearerToken: String,
     val tin: String,
     val name: String,

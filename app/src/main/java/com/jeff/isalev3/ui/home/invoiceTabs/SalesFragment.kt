@@ -13,6 +13,7 @@ import com.jeff.isalev3.ViewModels.StateViewModelFactory
 import com.jeff.isalev3.adapters.SalesAdapter
 import com.jeff.isalev3.databinding.FragmentSalesBinding
 import com.jeff.isalev3.ui.home.homeFragments.sheets.InvoiceDetailBottomSheet
+import com.stanbestgroup.isalev2.Room.RoomApplication
 
 class SalesFragment : Fragment() {
 
@@ -33,10 +34,8 @@ class SalesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel = ViewModelProvider(
-            this, StateViewModelFactory(
-                DataRepository(), DataStoreRepository.getInstance(requireContext())
-            )
+        viewModel = ViewModelProvider(this, StateViewModelFactory(
+            DataRepository(), DataStoreRepository.getInstance(requireContext()),(requireActivity().application as RoomApplication).repository)
         )[AppViewModel::class.java]
     }
 

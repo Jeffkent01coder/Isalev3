@@ -17,6 +17,7 @@ import com.jeff.isalev3.ViewModels.AppViewModel
 import com.jeff.isalev3.ViewModels.StateViewModelFactory
 import com.jeff.isalev3.adapters.SoldItemsAdapter
 import com.jeff.isalev3.models.SaleDetail
+import com.stanbestgroup.isalev2.Room.RoomApplication
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -33,7 +34,9 @@ class InvoiceDetailBottomSheet(private val saleDetail: SaleDetail) : BottomSheet
         viewModel = ViewModelProvider(
             this, StateViewModelFactory(
                 DataRepository(),
-                DataStoreRepository.getInstance(requireContext()))
+                DataStoreRepository.getInstance(requireContext()),
+                (requireActivity().application as RoomApplication).repository
+            )
         )[AppViewModel::class.java]
         _rootView = inflater.inflate(R.layout.fragment_invoice_detail, container)
         return rootView

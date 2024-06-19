@@ -11,21 +11,21 @@ import kotlinx.coroutines.withContext
 class DataRepository {
 
     suspend fun loginUser(authParams: AuthParams): LoginResponse {
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             RetrofitService.retrofitService.login(authParams)
         }
     }
 
     suspend fun getAllSales(token: String): GetSalesResponse {
-        return withContext(Dispatchers.IO){
-            RetrofitService.retrofitService.getSales("Bearer "+token)
+        return withContext(Dispatchers.IO) {
+            RetrofitService.retrofitService.getSales("Bearer " + token)
 
         }
     }
 
     suspend fun getAllProfomas(token: String): getProfomaResponse {
-        return withContext(Dispatchers.IO){
-            RetrofitService.retrofitService.getProfomas("Bearer "+token)
+        return withContext(Dispatchers.IO) {
+            RetrofitService.retrofitService.getProfomas("Bearer " + token)
         }
     }
 

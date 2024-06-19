@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
@@ -13,11 +14,13 @@ import com.google.zxing.qrcode.QRCodeWriter
 import com.jeff.isalev3.Repositories.AccountData
 import com.jeff.isalev3.Repositories.DataRepository
 import com.jeff.isalev3.Repositories.DataStoreRepository
+import com.jeff.isalev3.Repositories.RoomRepository
 import com.jeff.isalev3.models.AuthParams
 import com.jeff.isalev3.models.AuthUIState
 import com.jeff.isalev3.models.LoginResponse
 import com.jeff.isalev3.models.getProfomaUIState
 import com.jeff.isalev3.models.getSalesUIState
+import com.stanbestgroup.isalev2.Room.Entities
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -25,27 +28,30 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.util.EnumMap
 
-class AppViewModel (
+class AppViewModel(
     private val dataRepository: DataRepository,
-    private val dataStoreRepository: DataStoreRepository
+    private val dataStoreRepository: DataStoreRepository,
+    private val roomRepository: RoomRepository
 ) : ViewModel() {
-
 
     private var _authUIState: MutableLiveData<AuthUIState> = MutableLiveData()
     val authUIState get() = _authUIState
-
-    val savedPreferences = MutableLiveData<AccountData>()
-
 
     private var _getSalesUIState: MutableLiveData<getSalesUIState> = MutableLiveData()
     val getSalesUIState: MutableLiveData<getSalesUIState> get() = _getSalesUIState
 
     private var _getProfomasUIState: MutableLiveData<getProfomaUIState> = MutableLiveData()
     val getProfomasUIState: MutableLiveData<getProfomaUIState> get() = _getProfomasUIState
-
+    val savedPreferences = MutableLiveData<AccountData>()
     private val _qrCode = MutableLiveData<Bitmap>()
     val qrCode: LiveData<Bitmap> get() = _qrCode
 
+    val itemCategories: LiveData<List<Entities.Category>> =
+        roomRepository.categoriesList.asLiveData()
+    val itemsInStore: LiveData<List<Entities.ItemEntity>> = roomRepository.itemsList.asLiveData()
+
+    private var _cartCountUIState: MutableLiveData<Int> = MutableLiveData()
+    val cartCountUIState get() = _cartCountUIState
     fun loginUser(authParams: AuthParams) {
         viewModelScope.launch {
             try {
@@ -79,6 +85,92 @@ class AppViewModel (
         }
     }
 
+    fun getProfomas(token: String) {
+        viewModelScope.launch {
+            try {
+                val res = dataRepository.getAllProfomas(token)
+                Log.d("my profomas", res.toString())
+
+                _getProfomasUIState.value =
+                    getProfomaUIState("", res.message.toString(), res.status.toString(), res)
+                Log.d("my profomas", res.toString())
+            } catch (e: Exception) {
+                Log.d("my profomas exception", e.message.toString())
+                _getProfomasUIState.value = getProfomaUIState(e.message, null, null, null)
+            }
+        }
+    }
+
+    fun getCachedDetails() {
+        viewModelScope.launch {
+            dataStoreRepository.getAccountData().collectLatest {
+                savedPreferences.value = it
+            }
+        }
+    }
+
+    fun clearTables() {
+        viewModelScope.launch(Dispatchers.IO) {
+            awaitAll(
+                async {
+                    roomRepository.clearCategoriesTable()
+                },
+                async {
+                    roomRepository.clearItemsTable()
+                }
+            )
+        }
+    }
+
+    fun cacheDetails(data: LoginResponse, username: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            dataStoreRepository.writeToDataStore(data, username)
+
+            awaitAll(
+                async {
+                    roomRepository.addNewItem(data.items)
+                }, async {
+                    roomRepository.addNewCategory(data.categories)
+                }
+            )
+
+            // -----insert into codeslist
+            if (data.codeList?.isEmpty() == true) {
+
+            } else {
+
+            }
+            //------insert into tables classifications
+            if (data.classifications?.isEmpty() == true) {
+
+            } else {
+
+            }
+            //-----insert into sales
+            if (data.sales?.isEmpty() == true) {
+
+            } else {
+
+            }
+            //---- insert into credit
+            //------ insert into proforma
+            //------insertinto tables customers
+            if (data.customers?.isEmpty() == true) {
+
+            } else {
+
+            }
+            // -------insert into stock reasons
+            if (data.stockReasons?.isEmpty() == true) {
+
+            } else {
+
+            }
+
+
+        }
+    }
+
     fun generateQR(data: String, color: Int) {
         viewModelScope.launch(Dispatchers.Main) {
             val hints: MutableMap<EncodeHintType, Any> = EnumMap(EncodeHintType::class.java)
@@ -97,46 +189,21 @@ class AppViewModel (
 
         }
     }
-    fun getCachedDetails() {
-        viewModelScope.launch {
-            dataStoreRepository.getAccountData().collectLatest {
-                savedPreferences.value = it
-            }
-        }
+
+    fun updateSelectedItems(selectedItems: MutableList<String>) {
+        _cartCountUIState.value = selectedItems.size
     }
-
-    fun getProfomas(token: String) {
-        viewModelScope.launch {
-            try {
-                val res = dataRepository.getAllProfomas(token)
-                Log.d("my profomas", res.toString())
-
-                _getProfomasUIState.value =
-                    getProfomaUIState("", res.message.toString(), res.status.toString(), res)
-                Log.d("my profomas", res.toString())
-            } catch (e: Exception) {
-                Log.d("my profomas exception", e.message.toString())
-                _getProfomasUIState.value = getProfomaUIState(e.message, null, null, null)
-            }
-        }
-    }
-
-    fun cacheDetails(data: LoginResponse, username: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            dataStoreRepository.writeToDataStore(data, username)
-        }
-    }
-
 }
 
 class StateViewModelFactory(
     private val dataRepository: DataRepository,
     private val dataStoreRepository: DataStoreRepository,
+    private val roomRepository: RoomRepository
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(AppViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return AppViewModel(dataRepository, dataStoreRepository) as T
+            return AppViewModel(dataRepository, dataStoreRepository, roomRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

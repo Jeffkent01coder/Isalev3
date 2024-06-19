@@ -2,11 +2,17 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("androidx.navigation.safeargs.kotlin")
+//    id("com.google.devtools.ksp")
+    id("kotlin-kapt")
+    id("androidx.room")
+
 }
 
 android {
     namespace = "com.jeff.isalev3"
     compileSdk = 34
+
+
 
     defaultConfig {
         applicationId = "com.jeff.isalev3"
@@ -16,6 +22,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    room {
+        schemaDirectory("$projectDir/schemas")
     }
 
     buildTypes {
@@ -37,6 +47,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -61,9 +72,11 @@ dependencies {
     //retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-//    //Room
-//    implementation("androidx.room:room-ktx:2.6.1")
-//    ksp("androidx.room:room-compiler:2.6.1")
+
+    //Room
+    implementation("androidx.room:room-ktx:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
+
 
     //Datastore
     implementation ("androidx.datastore:datastore-preferences:1.0.0")

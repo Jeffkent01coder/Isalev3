@@ -14,6 +14,7 @@ import com.jeff.isalev3.Repositories.DataStoreRepository
 import com.jeff.isalev3.ViewModels.AppViewModel
 import com.jeff.isalev3.ViewModels.StateViewModelFactory
 import com.jeff.isalev3.databinding.FragmentInvoiceDetailBinding
+import com.stanbestgroup.isalev2.Room.RoomApplication
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,7 +42,8 @@ class InvoiceDetail : Fragment() {
         viewModel = ViewModelProvider(
             this, StateViewModelFactory(
                 DataRepository(),
-                DataStoreRepository.getInstance(requireContext())
+                DataStoreRepository.getInstance(requireContext()),
+                (requireActivity().application as RoomApplication).repository
             )
         )[AppViewModel::class.java]
         arguments?.let {

@@ -18,28 +18,24 @@ import com.jeff.isalev3.ViewModels.StateViewModelFactory
 import com.jeff.isalev3.databinding.ActivityLoginBinding
 import com.jeff.isalev3.models.AuthParams
 import com.jeff.isalev3.ui.home.Home
+import com.stanbestgroup.isalev2.Room.RoomApplication
 
 class Login : AppCompatActivity() {
-
     private lateinit var binding: ActivityLoginBinding
     private lateinit var viewModel: AppViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
-        super.onCreate(savedInstanceState)
-
         viewModel = ViewModelProvider(this, StateViewModelFactory(
-            DataRepository(), DataStoreRepository.getInstance(applicationContext))
+            DataRepository(), DataStoreRepository.getInstance(applicationContext),(application as RoomApplication).repository)
         )[AppViewModel::class.java]
 
+        viewModel.clearTables()
         binding.signIn.setOnClickListener {
             binding.loginProgress.visibility = View.VISIBLE
-            viewModel.loginUser(
-                AuthParams(binding.businessPin.text.toString().trim(),
-                binding.username.text.toString().trim(),binding.password.text.toString().trim())
-            )
+            viewModel.loginUser(AuthParams(binding.businessPin.text.toString().trim(),
+                binding.username.text.toString().trim(),binding.password.text.toString().trim()))
             viewModel.authUIState.observe(this) {state->
                 Log.d("Login state",state.toString())
                 state.errorMessage?.let {
@@ -50,16 +46,11 @@ class Login : AppCompatActivity() {
                     //write to data store
                     binding.loginProgress.visibility = View.GONE
                     viewModel.cacheDetails(state.observableLoginData!!,binding.username.text.toString().trim())
-                    startActivity(Intent(this, Home::class.java).setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY))
+                    startActivity(Intent(this,Home::class.java).setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY))
 
                 }
 
             }
-        }
-
-        binding.btnRegister.setOnClickListener{
-            startActivity(Intent(this, Register::class.java))
-            finish()
         }
     }
 }

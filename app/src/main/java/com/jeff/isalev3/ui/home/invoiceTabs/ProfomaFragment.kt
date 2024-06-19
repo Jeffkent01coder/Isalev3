@@ -13,6 +13,7 @@ import com.jeff.isalev3.ViewModels.AppViewModel
 import com.jeff.isalev3.ViewModels.StateViewModelFactory
 import com.jeff.isalev3.adapters.ProfomaAdapter
 import com.jeff.isalev3.databinding.FragmentProfomaBinding
+import com.stanbestgroup.isalev2.Room.RoomApplication
 
 
 class ProfomaFragment : Fragment() {
@@ -22,10 +23,8 @@ class ProfomaFragment : Fragment() {
     private lateinit var viewModel: AppViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(
-            this, StateViewModelFactory(
-                DataRepository(), DataStoreRepository.getInstance(requireContext())
-            )
+        viewModel = ViewModelProvider(this, StateViewModelFactory(
+            DataRepository(), DataStoreRepository.getInstance(requireContext()),(requireActivity().application as RoomApplication).repository)
         )[AppViewModel::class.java]
     }
 
