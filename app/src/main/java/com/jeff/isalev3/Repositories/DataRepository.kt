@@ -5,6 +5,7 @@ import com.jeff.isalev3.models.GetSalesResponse
 import com.jeff.isalev3.models.LoginResponse
 import com.jeff.isalev3.models.getProfomaResponse
 import com.jeff.isalev3.network.RetrofitService
+import com.jeff.isalev3.models.StockData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -28,5 +29,12 @@ class DataRepository {
             RetrofitService.retrofitService.getProfomas("Bearer " + token)
         }
     }
+
+    suspend fun getItems(token: String): StockData {
+        return withContext(Dispatchers.IO) {
+            RetrofitService.retrofitService.getItems("Bearer $token") // Add a space between "Bearer" and token
+        }
+    }
+
 
 }

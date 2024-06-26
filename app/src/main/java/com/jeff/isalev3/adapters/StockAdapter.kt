@@ -1,3 +1,44 @@
+//package com.jeff.isalev3.adapters
+//
+//import android.view.LayoutInflater
+//import android.view.ViewGroup
+//import androidx.recyclerview.widget.RecyclerView
+//import com.jeff.isalev3.databinding.ViewStockRecyclerviewModelBinding
+//import com.jeff.isalev3.models.StockItem
+//import java.text.DecimalFormat
+//
+//class StockAdapter(private val stockList: List<StockItem>) :
+//    RecyclerView.Adapter<StockAdapter.ViewHolder>() {
+//
+//    private val decimalFormat = DecimalFormat("#,##0.00")
+//
+//    inner class ViewHolder(val binding: ViewStockRecyclerviewModelBinding) :
+//        RecyclerView.ViewHolder(binding.root) {
+//
+//        fun bind(item: StockItem) {
+//            binding.txtViewStockProductName.text = item.itemNm
+//            binding.txtViewStockProductPrice.text = "Price: ${decimalFormat.format(item.dftPrc)}"
+//            binding.txtViewStockProductQty.text = "Current Stock: ${decimalFormat.format(item.currentStock)}"
+//        }
+//    }
+//
+//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+//        val binding = ViewStockRecyclerviewModelBinding.inflate(
+//            LayoutInflater.from(parent.context),
+//            parent,
+//            false
+//        )
+//        return ViewHolder(binding)
+//    }
+//
+//    override fun getItemCount(): Int = stockList.size
+//
+//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+//        val obj = stockList[position]
+//        holder.bind(obj)
+//    }
+//}
+
 package com.jeff.isalev3.adapters
 
 import android.content.Context
@@ -5,55 +46,62 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.jeff.isalev3.R
-import com.stanbestgroup.isalev2.Fragments.store.data.Item
+import com.jeff.isalev3.databinding.ViewStockRecyclerviewModelBinding
+import com.jeff.isalev3.models.StockItem
 import java.text.DecimalFormat
 
 class StockAdapter(
     val context: Context,
     val type: String,
-    val stocks: List<Item>,
-    private val onClickListener: OnClickListener
+    private val stockList: List<StockItem>,
+    val clickListener: OnClickListener
 ) : RecyclerView.Adapter<StockAdapter.ViewHolder>() {
-    val decimalFormat = DecimalFormat("#,##0.00")
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val txtName: TextView = itemView.findViewById(R.id.txtViewStockProductName)
-        val txtPrice: TextView = itemView.findViewById(R.id.txtViewStockProductPrice)
-        val txtQty: TextView = itemView.findViewById(R.id.txtViewStockProductQty)
-        val imgView: ImageView = itemView.findViewById(R.id.imgViewStockEdit)
-        val mV: MaterialCardView = itemView.findViewById(R.id.mvViewStock)
+    private val decimalFormat = DecimalFormat("#,##0.00")
+
+    inner class ViewHolder(val binding: ViewStockRecyclerviewModelBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(item: StockItem) {
+            binding.txtViewStockProductName.text = item.itemNm
+            binding.txtViewStockProductPrice.text = "Price: ${decimalFormat.format(item.dftPrc)}"
+            binding.txtViewStockProductQty.text =
+                "Current Stock: ${decimalFormat.format(item.currentStock)}"
+
+            // Setting visibility of imgView based on the type
+            if (type == "adjust") {
+                binding.imgViewStockEdit.visibility = View.VISIBLE
+            } else {
+                binding.imgViewStockEdit.visibility = View.GONE
+            }
+
+            // Click listener for the MaterialCardView
+            binding.mvViewStock.setOnClickListener {
+                clickListener.onClick(item)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context)
-            .inflate(R.layout.view_stock_recyclerview_model, parent, false)
-        return ViewHolder(view)
+        val binding = ViewStockRecyclerviewModelBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return ViewHolder(binding)
     }
+
+    override fun getItemCount(): Int = stockList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = stocks[position]
-        holder.txtName.text = item.itemNm
-        holder.txtPrice.text = "Price: ${decimalFormat.format(item.dftPrc.toDouble())}"
-        holder.txtQty.text = "Current Stock: ${decimalFormat.format(item.currentStock.toDouble())}"
-        holder.mV.setOnClickListener {
-            onClickListener.onClick(item)
-        }
-        if (type == "adjust") {
-            holder.imgView.visibility = View.VISIBLE
-        } else {
-            holder.imgView.visibility = View.GONE
-        }
+        val obj = stockList[position]
+        holder.bind(obj)
     }
 
-    override fun getItemCount(): Int {
-        return stocks.size
-    }
-
-    class OnClickListener(val clickListener: (item: Item) -> Unit) {
-        fun onClick(item: Item) = clickListener(item)
+    class OnClickListener(val clickListener: (item: StockItem) -> Unit) {
+        fun onClick(item: StockItem) = clickListener(item)
     }
 }

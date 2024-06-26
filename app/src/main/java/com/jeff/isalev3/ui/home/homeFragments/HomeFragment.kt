@@ -1,13 +1,10 @@
 package com.jeff.isalev3.ui.home.homeFragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Html
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -18,21 +15,20 @@ import com.jeff.isalev3.Repositories.DataStoreRepository
 import com.jeff.isalev3.ViewModels.AppViewModel
 import com.jeff.isalev3.ViewModels.StateViewModelFactory
 import com.jeff.isalev3.databinding.FragmentHomeBinding
+import com.jeff.isalev3.ui.auth.Login
 import com.jeff.isalev3.ui.home.homeFragments.sheets.LearnMoreBottomSheet
 import com.stanbestgroup.isalev2.Room.RoomApplication
 
 class HomeFragment : Fragment() {
 
     private lateinit var viewModel: AppViewModel
-
-    private lateinit var binding: FragmentHomeBinding
-
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         viewModel = ViewModelProvider(
             this, StateViewModelFactory(
                 DataRepository(),
@@ -41,7 +37,7 @@ class HomeFragment : Fragment() {
             )
         )[AppViewModel::class.java]
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         return binding.root
     }
@@ -54,38 +50,35 @@ class HomeFragment : Fragment() {
         binding.learMore.setOnClickListener {
             LearnMoreBottomSheet().show(childFragmentManager, "Home page")
         }
+
         binding.showDetails.setOnClickListener {
             details?.let {
                 MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogtext)
                     .setIcon(R.drawable.baseline_verified_24)
                     .setTitle(Html.fromHtml("<b>${details.name}</b>"))
-
-                    /*"Branch: ${details?.branchName}-${details?.branchId}\n"
-                            +"Physical address: ${details?.province}-${details?.street}\n"+"Managed by: ${details?.managerName}\n"
-                          + "Phone number: ${details?.managerPhone}\n"+"Email: ${details?.managerEmail}"*/
                     .setMessage(
                         Html.fromHtml(
-                            "<b>Branch: </b>${details.branchName}-${details.branchId}\n<br/>" +
-                                    "<b>Physical address: </b>${details.province}-${details.street}\n<br/>" +
+                            "<b>Branch: </b>${details.branchName}-${details.branchId}<br/>" +
+                                    "<b>Physical address: </b>${details.province}-${details.street}<br/>" +
                                     "<b>Managed by: </b>${details.managerName}<br/>" +
-                                    "<b>Phone number:</b> ${details.managerPhone}\n<br/>" +
-                                    "<b>Email:</b> ${details.managerEmail}"
+                                    "<b>Phone number: </b>${details.managerPhone}<br/>" +
+                                    "<b>Email: </b>${details.managerEmail}"
                         )
                     )
-                    .setPositiveButton("Exit") { _, _ -> }
-
+                    .setPositiveButton("Exit", null)
                     .show()
             }
-
         }
+
         viewModel.savedPreferences.observe(viewLifecycleOwner) {
-            binding.totalSalesCash.text = "KES\n" + it.totalSales.toDouble().toString()
-            binding.totalSales.text = "Sales\n" + it.numberOfSales
-            binding.incurredVat.text =
-                "Value added tax\n" + "KES " + it.totalTax.toDouble().toString()
+            it?.let {
+                binding.totalSalesCash.text = "KES\n${it.totalSales.toDouble()}"
+                binding.totalSales.text = "Sales\n${it.numberOfSales}"
+                binding.incurredVat.text = "Value added tax\nKES ${it.totalTax.toDouble()}"
+            }
         }
     }
-
+    
     @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.home_menu, menu)
@@ -98,36 +91,34 @@ class HomeFragment : Fragment() {
         return when (item.itemId) {
             R.id.Profile -> {
                 // Handle Profile action
-                // e.g., navigate to ProfileFragment
                 true
             }
-
             R.id.logout -> {
                 // Handle Logout action
-                // e.g., perform logout and navigate to login screen
+                val intent  = Intent(requireActivity(), Login::class.java)
+                startActivity(intent)
+                Toast.makeText(requireActivity(), "Log out", Toast.LENGTH_SHORT).show()
                 true
             }
-
             R.id.settingsFragment -> {
-                // Handle Settings action
-                navController.navigate(R.id.action_homeFragment_to_settingsFragment)
+                navController.navigate(HomeFragmentDirections.actionHomeFragmentToSettingsFragment())
+                Toast.makeText(requireActivity(), "To settings", Toast.LENGTH_SHORT).show()
                 true
             }
-
             R.id.reportsFragment -> {
-                // Handle Reports action
-                // e.g., navigate to ReportsFragment
+                navController.navigate(HomeFragmentDirections.actionHomeFragmentToReportsFragment())
                 true
             }
-
             R.id.customerFragment -> {
-                // Handle Customers action
-                // e.g., navigate to CustomerFragment
+                navController.navigate(HomeFragmentDirections.actionHomeFragmentToCustomerFragment())
                 true
             }
-
             else -> super.onOptionsItemSelected(item)
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

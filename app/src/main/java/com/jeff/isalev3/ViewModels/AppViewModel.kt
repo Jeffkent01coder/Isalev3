@@ -18,6 +18,7 @@ import com.jeff.isalev3.Repositories.RoomRepository
 import com.jeff.isalev3.models.AuthParams
 import com.jeff.isalev3.models.AuthUIState
 import com.jeff.isalev3.models.LoginResponse
+import com.jeff.isalev3.models.getItemsUIState
 import com.jeff.isalev3.models.getProfomaUIState
 import com.jeff.isalev3.models.getSalesUIState
 import com.stanbestgroup.isalev2.Room.Entities
@@ -42,6 +43,13 @@ class AppViewModel(
 
     private var _getProfomasUIState: MutableLiveData<getProfomaUIState> = MutableLiveData()
     val getProfomasUIState: MutableLiveData<getProfomaUIState> get() = _getProfomasUIState
+
+//    private var _getItemsUIState: MutableLiveData<getItemsUIState> = MutableLiveData()
+//    val getItemsUIState: MutableLiveData<getItemsUIState> get() = _getItemsUIState
+
+    private var _getStockDataUIState: MutableLiveData<getItemsUIState> = MutableLiveData()
+    val getStockDataUIState: MutableLiveData<getItemsUIState> = _getStockDataUIState
+
     val savedPreferences = MutableLiveData<AccountData>()
     private val _qrCode = MutableLiveData<Bitmap>()
     val qrCode: LiveData<Bitmap> get() = _qrCode
@@ -78,6 +86,21 @@ class AppViewModel(
                 _getSalesUIState.value =
                     getSalesUIState("", res.message.toString(), res.status.toString(), res)
                 Log.d("my sales", res.toString())
+            } catch (e: Exception) {
+                Log.d("my sales exception", e.message.toString())
+                _getSalesUIState.value = getSalesUIState(e.message, null, null, null)
+            }
+        }
+    }
+
+
+    fun getStock(token: String) {
+        viewModelScope.launch {
+            try {
+                val res = dataRepository.getItems(token)
+                Log.i("my items", res.toString())
+                _getStockDataUIState.value =
+                    getItemsUIState("", res.message.toString(), res.status.toString(), res)
             } catch (e: Exception) {
                 Log.d("my sales exception", e.message.toString())
                 _getSalesUIState.value = getSalesUIState(e.message, null, null, null)

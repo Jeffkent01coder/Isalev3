@@ -65,21 +65,6 @@
 
         </com.google.android.material.appbar.MaterialToolbar>
 
-
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/segoe_ui_bold"
-            android:text="Add Product/Service"
-            android:textColor="@color/accentColor"
-            android:textSize="16sp" />
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

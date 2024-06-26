@@ -12,3 +12,10 @@ data class getProfomaUIState(
       val statusResponse:String?,
       val observableData:getProfomaResponse?
 )
+
+data class getItemsUIState(
+      val errorMessage:String?,
+      val statusMessage:String?,
+      val statusResponse:String?,
+      val observableData: StockData?
+)

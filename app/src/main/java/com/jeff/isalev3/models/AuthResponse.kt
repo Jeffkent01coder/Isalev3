@@ -2,6 +2,7 @@ package com.jeff.isalev3.models
 
 import kotlinx.serialization.Serializable
 
+
 //A class that will hold the login state that updates the UI and cached data
 data class AuthUIState(
     val errorMessage: String?,
@@ -251,3 +252,5 @@ data class StockReason(
     val reason: String,
     val description: String
 )
+
+

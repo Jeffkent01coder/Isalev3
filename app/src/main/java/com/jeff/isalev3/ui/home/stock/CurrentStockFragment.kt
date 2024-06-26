@@ -1,60 +1,175 @@
+//package com.jeff.isalev3.ui.home.stock
+//
+//import android.os.Bundle
+//import android.view.LayoutInflater
+//import android.view.View
+//import android.view.ViewGroup
+//import androidx.fragment.app.Fragment
+//import androidx.lifecycle.ViewModelProvider
+//import androidx.recyclerview.widget.LinearLayoutManager
+//import com.jeff.isalev3.Repositories.DataRepository
+//import com.jeff.isalev3.Repositories.DataStoreRepository
+//import com.jeff.isalev3.ViewModels.AppViewModel
+//import com.jeff.isalev3.ViewModels.StateViewModelFactory
+//import com.jeff.isalev3.adapters.StockAdapter
+//import com.jeff.isalev3.databinding.FragmentCurrentStockBinding
+//import com.stanbestgroup.isalev2.Room.RoomApplication
+//
+//class CurrentStockFragment : Fragment() {
+//
+//    private var _binding: FragmentCurrentStockBinding? = null
+//    private val binding get() = _binding!!
+//    private lateinit var viewModel: AppViewModel
+//
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//
+//        viewModel = ViewModelProvider(
+//            this, StateViewModelFactory(
+//                DataRepository(),
+//                DataStoreRepository.getInstance(requireContext()),
+//                (requireActivity().application as RoomApplication).repository
+//            )
+//        )[AppViewModel::class.java]
+//    }
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View {
+//        _binding = FragmentCurrentStockBinding.inflate(inflater, container, false)
+//        return binding.root
+//    }
+//
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//        binding.recyclerViewStock.layoutManager = LinearLayoutManager(requireContext())
+//
+//        viewModel.getCachedDetails()
+//        viewModel.savedPreferences.observe(viewLifecycleOwner) {
+//            binding.progressBar.visibility = View.VISIBLE
+//            viewModel.getStock(it.bearerToken)
+//        }
+//        viewModel.getStockDataUIState.observe(viewLifecycleOwner) {
+//            binding.progressBar.visibility = View.GONE
+//            it.errorMessage?.let { error ->
+//                binding.fetchStateHolder.text = error
+//            }
+//            it.statusResponse?.let { status ->
+//                if (status == "true") {
+//                    if (it.observableData!!.items.isNullOrEmpty()) {
+//                        binding.fetchStateHolder.apply {
+//                            text = "No Items in Stock"
+//                            visibility = View.VISIBLE
+//                        }
+//                    } else {
+//                        val accountDetails = viewModel.savedPreferences.value
+//                        binding.recyclerViewStock.apply {
+//                            adapter = StockAdapter(it.observableData.items)
+//                        }
+//                    }
+//                } else {
+//                    binding.fetchStateHolder.apply {
+//                        text = it.statusMessage
+//                        visibility = View.VISIBLE
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//
+//}
+
 package com.jeff.isalev3.ui.home.stock
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.jeff.isalev3.R
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.jeff.isalev3.Repositories.DataRepository
+import com.jeff.isalev3.Repositories.DataStoreRepository
+import com.jeff.isalev3.ViewModels.AppViewModel
+import com.jeff.isalev3.ViewModels.StateViewModelFactory
+import com.jeff.isalev3.adapters.StockAdapter
+import com.jeff.isalev3.databinding.FragmentCurrentStockBinding
+import com.jeff.isalev3.models.StockItem
+import com.stanbestgroup.isalev2.Room.RoomApplication
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CurrentStockFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CurrentStockFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var _binding: FragmentCurrentStockBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var viewModel: AppViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+        viewModel = ViewModelProvider(
+            this, StateViewModelFactory(
+                DataRepository(),
+                DataStoreRepository.getInstance(requireContext()),
+                (requireActivity().application as RoomApplication).repository
+            )
+        )[AppViewModel::class.java]
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_current_stock, container, false)
+    ): View {
+        _binding = FragmentCurrentStockBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CurrentStockFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CurrentStockFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.recyclerViewStock.layoutManager = LinearLayoutManager(requireContext())
+
+        viewModel.getCachedDetails()
+        viewModel.savedPreferences.observe(viewLifecycleOwner) {
+            binding.progressBar.visibility = View.VISIBLE
+            viewModel.getStock(it.bearerToken)
+        }
+        viewModel.getStockDataUIState.observe(viewLifecycleOwner) {
+            binding.progressBar.visibility = View.GONE
+            it.errorMessage?.let { error ->
+                binding.fetchStateHolder.text = error
+            }
+            it.statusResponse?.let { status ->
+                if (status == "true") {
+                    if (it.observableData!!.items.isNullOrEmpty()) {
+                        binding.fetchStateHolder.apply {
+                            text = "No Items in Stock"
+                            visibility = View.VISIBLE
+                        }
+                    } else {
+                        binding.fetchStateHolder.visibility = View.GONE
+                        binding.recyclerViewStock.adapter = StockAdapter(
+                            requireContext(),
+                            "default",
+                            it.observableData.items,
+                            StockAdapter.OnClickListener { item ->
+                                // Handle item click
+                                Toast.makeText(requireActivity(), "My Stock", Toast.LENGTH_SHORT).show()
+                            }
+                        )
+                    }
+                } else {
+                    binding.fetchStateHolder.apply {
+                        text = it.statusMessage
+                        visibility = View.VISIBLE
+                    }
                 }
             }
+        }
     }
 }
+

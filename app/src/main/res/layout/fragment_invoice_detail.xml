@@ -429,12 +429,14 @@
                 >
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/smsInvoiceDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="SMS"
                     style="@style/Widget.Material3.Button"
                     android:layout_weight="1"/>
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/printInvoiceDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Print"
@@ -442,6 +444,7 @@
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"/>
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/shareInvoiceDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Share"

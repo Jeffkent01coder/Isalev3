@@ -4,8 +4,8 @@ import com.jeff.isalev3.models.AuthParams
 import com.jeff.isalev3.models.GetSalesResponse
 import com.jeff.isalev3.models.LoginResponse
 import com.jeff.isalev3.models.getProfomaResponse
+import com.jeff.isalev3.models.StockData
 import okhttp3.OkHttpClient
-import okhttp3.ResponseBody
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
@@ -40,9 +40,7 @@ interface ApiService {
     suspend fun getSales(@Header("Authorization") token: String): GetSalesResponse
     @GET("profoma")
     suspend fun getProfomas(@Header("Authorization") token: String): getProfomaResponse
-//    @GET("items")
-//    suspend fun getItems(@Header("Authorization") token: String): ResponseBody
-
-
+    @GET("items")
+    suspend fun getItems(@Header("Authorization") token: String): StockData
 
 }
