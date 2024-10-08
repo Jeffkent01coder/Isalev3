@@ -6,6 +6,8 @@ import com.jeff.isalev3.models.LoginResponse
 import com.jeff.isalev3.models.getProfomaResponse
 import com.jeff.isalev3.network.RetrofitService
 import com.jeff.isalev3.models.StockData
+import com.jeff.isalev3.ui.auth.changePassword.ChangePassword
+import com.jeff.isalev3.ui.auth.changePassword.ChangePasswordRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -35,6 +37,11 @@ class DataRepository {
             RetrofitService.retrofitService.getItems("Bearer $token") // Add a space between "Bearer" and token
         }
     }
+
+    suspend fun changePassword(token: String, request: ChangePasswordRequest): ChangePassword {
+        return RetrofitService.retrofitService.changePassword("Bearer $token", request )
+    }
+
 
 
 }

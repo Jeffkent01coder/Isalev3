@@ -27,6 +27,12 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+//        binding.resetPassword.setOnClickListener {
+//            startActivity(Intent(this, ResetPassword::class.java))
+//            finish()
+//        }
+
         viewModel = ViewModelProvider(this, StateViewModelFactory(
             DataRepository(), DataStoreRepository.getInstance(applicationContext),(application as RoomApplication).repository)
         )[AppViewModel::class.java]

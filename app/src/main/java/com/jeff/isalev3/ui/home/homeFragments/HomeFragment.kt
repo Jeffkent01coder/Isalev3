@@ -16,6 +16,7 @@ import com.jeff.isalev3.ViewModels.AppViewModel
 import com.jeff.isalev3.ViewModels.StateViewModelFactory
 import com.jeff.isalev3.databinding.FragmentHomeBinding
 import com.jeff.isalev3.ui.auth.Login
+import com.jeff.isalev3.ui.auth.ResetPassword
 import com.jeff.isalev3.ui.home.homeFragments.sheets.LearnMoreBottomSheet
 import com.stanbestgroup.isalev2.Room.RoomApplication
 
@@ -49,6 +50,11 @@ class HomeFragment : Fragment() {
 
         binding.learMore.setOnClickListener {
             LearnMoreBottomSheet().show(childFragmentManager, "Home page")
+        }
+
+        binding.changePassword.setOnClickListener {
+            val intent = Intent(requireActivity(), ResetPassword::class.java)
+            startActivity(intent)
         }
 
         binding.showDetails.setOnClickListener {

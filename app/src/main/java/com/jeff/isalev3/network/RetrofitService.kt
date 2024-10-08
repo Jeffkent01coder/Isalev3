@@ -5,6 +5,8 @@ import com.jeff.isalev3.models.GetSalesResponse
 import com.jeff.isalev3.models.LoginResponse
 import com.jeff.isalev3.models.getProfomaResponse
 import com.jeff.isalev3.models.StockData
+import com.jeff.isalev3.ui.auth.changePassword.ChangePassword
+import com.jeff.isalev3.ui.auth.changePassword.ChangePasswordRequest
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -42,5 +44,10 @@ interface ApiService {
     suspend fun getProfomas(@Header("Authorization") token: String): getProfomaResponse
     @GET("items")
     suspend fun getItems(@Header("Authorization") token: String): StockData
+    @POST("auth/change-password")
+    suspend fun changePassword(
+        @Header("Authorization") token: String,
+        @Body request: ChangePasswordRequest
+    ): ChangePassword
 
 }

@@ -21,6 +21,7 @@ import com.jeff.isalev3.models.LoginResponse
 import com.jeff.isalev3.models.getItemsUIState
 import com.jeff.isalev3.models.getProfomaUIState
 import com.jeff.isalev3.models.getSalesUIState
+import com.jeff.isalev3.ui.auth.changePassword.ChangePasswordRequest
 import com.stanbestgroup.isalev2.Room.Entities
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -123,6 +124,38 @@ class AppViewModel(
             }
         }
     }
+
+    fun resetPassword(
+        token: String,
+        currentPassword: String,
+        newPassword: String,
+        confirmPassword: String,
+        onSuccess: (String) -> Unit,
+        onError: (String) -> Unit
+    ) {
+        viewModelScope.launch {
+            if (newPassword != confirmPassword) {
+                onError("Passwords do not match")
+                return@launch
+            }
+
+            val resetPasswordRequest = ChangePasswordRequest(currentPassword, newPassword)
+
+            try {
+                val response = dataRepository.changePassword(token, resetPasswordRequest)
+                if (response.status) {
+                    onSuccess("Password reset successful")
+                } else {
+                    onError(response.message)
+                }
+            } catch (e: Exception) {
+                onError(e.message ?: "An unknown error occurred")
+            }
+        }
+    }
+
+
+
 
     fun getCachedDetails() {
         viewModelScope.launch {
