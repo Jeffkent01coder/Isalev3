@@ -33,6 +33,13 @@ class Login : AppCompatActivity() {
 //            finish()
 //        }
 
+        binding.btnRegister.setOnClickListener {
+            startActivity(Intent(this, Register::class.java))
+            finish()
+        }
+
+
+
         viewModel = ViewModelProvider(this, StateViewModelFactory(
             DataRepository(), DataStoreRepository.getInstance(applicationContext),(application as RoomApplication).repository)
         )[AppViewModel::class.java]
