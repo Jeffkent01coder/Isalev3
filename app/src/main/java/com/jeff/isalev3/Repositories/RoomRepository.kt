@@ -13,7 +13,10 @@ class RoomRepository(private val dao: roomDAO) {
     suspend fun addNewItem(itemList: List<Item>?) {
         itemList?.let { items ->
             items.forEach { item ->
-                val itemCategoryId = item.ItemCategory.id
+                val itemCategoryId = item.ItemCategory?.id ?: 0  // Default to 0 if ItemCategory is null
+                val itemStdNm = item.itemStdNm ?: ""             // Default to empty string if itemStdNm is null
+                val btchNo = item.btchNo ?: ""                   // Default to empty string if btchNo is null
+                val bcd = item.bcd ?: ""                         // Default to empty string if bcd is null
 
                 dao.addItem(
                     Entities.ItemEntity(
@@ -24,15 +27,15 @@ class RoomRepository(private val dao: roomDAO) {
                         item.itemClsCd,
                         item.itemTyCd,
                         item.itemNm,
-                        item.itemStdNm,
+                        itemStdNm,          // Using non-nullable itemStdNm with default
                         item.picture,
                         item.orgnNatCd,
                         item.pkgUnitCd,
                         item.qtyUnitCd,
                         item.taxTyCd,
-                        item.btchNo,
+                        btchNo,             // Using non-nullable btchNo with default
                         item.regBhfId,
-                        item.bcd,
+                        bcd,                // Using non-nullable bcd with default
                         item.dftPrc,
                         item.grpPrcL1,
                         item.grpPrcL2,
@@ -50,7 +53,7 @@ class RoomRepository(private val dao: roomDAO) {
                         item.createdAt,
                         item.updatedAt,
                         item.deletedAt,
-                        itemCategoryId,
+                        itemCategoryId,     // Using default value if null
                         item.userId,
                         item.businessId
                     )

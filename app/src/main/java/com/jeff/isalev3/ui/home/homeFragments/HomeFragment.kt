@@ -45,6 +45,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
+
         viewModel.getCachedDetails()
         val details = viewModel.savedPreferences.value
 
@@ -52,10 +54,7 @@ class HomeFragment : Fragment() {
             LearnMoreBottomSheet().show(childFragmentManager, "Home page")
         }
 
-        binding.changePassword.setOnClickListener {
-            val intent = Intent(requireActivity(), ResetPassword::class.java)
-            startActivity(intent)
-        }
+
 
         binding.showDetails.setOnClickListener {
             details?.let {
@@ -83,43 +82,36 @@ class HomeFragment : Fragment() {
                 binding.incurredVat.text = "Value added tax\nKES ${it.totalTax.toDouble()}"
             }
         }
-    }
-    
-    @Deprecated("Deprecated in Java")
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.home_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
 
-    @Deprecated("Deprecated in Java")
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val navController = findNavController()
-        return when (item.itemId) {
-            R.id.Profile -> {
-                // Handle Profile action
-                true
+        // Set the toolbar menu click listener
+        binding.toolbar.setOnMenuItemClickListener { item ->
+            val navController = findNavController()
+            when (item.itemId) {
+                R.id.Profile -> {
+                    // Handle Profile action
+                    true
+                }
+                R.id.logout -> {
+                    val intent = Intent(requireActivity(), Login::class.java)
+                    startActivity(intent)
+                    Toast.makeText(requireActivity(), "Log out", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.settingsFragment -> {
+                    navController.navigate(HomeFragmentDirections.actionHomeFragmentToSettingsFragment())
+                    Toast.makeText(requireActivity(), "To settings", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.reportsFragment -> {
+                    navController.navigate(HomeFragmentDirections.actionHomeFragmentToReportsFragment())
+                    true
+                }
+                R.id.customerFragment -> {
+                    navController.navigate(HomeFragmentDirections.actionHomeFragmentToCustomerFragment())
+                    true
+                }
+                else -> false
             }
-            R.id.logout -> {
-                // Handle Logout action
-                val intent  = Intent(requireActivity(), Login::class.java)
-                startActivity(intent)
-                Toast.makeText(requireActivity(), "Log out", Toast.LENGTH_SHORT).show()
-                true
-            }
-            R.id.settingsFragment -> {
-                navController.navigate(HomeFragmentDirections.actionHomeFragmentToSettingsFragment())
-                Toast.makeText(requireActivity(), "To settings", Toast.LENGTH_SHORT).show()
-                true
-            }
-            R.id.reportsFragment -> {
-                navController.navigate(HomeFragmentDirections.actionHomeFragmentToReportsFragment())
-                true
-            }
-            R.id.customerFragment -> {
-                navController.navigate(HomeFragmentDirections.actionHomeFragmentToCustomerFragment())
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
         }
     }
 

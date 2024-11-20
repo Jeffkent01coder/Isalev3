@@ -49,6 +49,7 @@ class Login : AppCompatActivity() {
             binding.loginProgress.visibility = View.VISIBLE
             viewModel.loginUser(AuthParams(binding.businessPin.text.toString().trim(),
                 binding.username.text.toString().trim(),binding.password.text.toString().trim()))
+
             viewModel.authUIState.observe(this) {state->
                 Log.d("Login state",state.toString())
                 state.errorMessage?.let {

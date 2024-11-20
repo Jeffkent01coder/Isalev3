@@ -18,10 +18,15 @@ import com.jeff.isalev3.Repositories.RoomRepository
 import com.jeff.isalev3.models.AuthParams
 import com.jeff.isalev3.models.AuthUIState
 import com.jeff.isalev3.models.LoginResponse
+import com.jeff.isalev3.models.SignUp
+import com.jeff.isalev3.models.SignUpAuthUIState
+import com.jeff.isalev3.models.SignUpResponse
 import com.jeff.isalev3.models.getItemsUIState
 import com.jeff.isalev3.models.getProfomaUIState
 import com.jeff.isalev3.models.getSalesUIState
 import com.jeff.isalev3.ui.auth.changePassword.ChangePasswordRequest
+import com.jeff.isalev3.ui.home.stock.additems.model.AddItemData
+import com.jeff.isalev3.ui.home.stock.additems.model.AddItemUIState
 import com.stanbestgroup.isalev2.Room.Entities
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -39,14 +44,19 @@ class AppViewModel(
     private var _authUIState: MutableLiveData<AuthUIState> = MutableLiveData()
     val authUIState get() = _authUIState
 
+    private var _signUpUIState: MutableLiveData<SignUpAuthUIState> = MutableLiveData()
+    val signUpUIState get() = _signUpUIState
+
     private var _getSalesUIState: MutableLiveData<getSalesUIState> = MutableLiveData()
     val getSalesUIState: MutableLiveData<getSalesUIState> get() = _getSalesUIState
 
     private var _getProfomasUIState: MutableLiveData<getProfomaUIState> = MutableLiveData()
     val getProfomasUIState: MutableLiveData<getProfomaUIState> get() = _getProfomasUIState
 
-//    private var _getItemsUIState: MutableLiveData<getItemsUIState> = MutableLiveData()
-//    val getItemsUIState: MutableLiveData<getItemsUIState> get() = _getItemsUIState
+    // Define LiveData for AddItemUIState to observe in the UI
+    private val _addItemUIState = MutableLiveData<AddItemUIState>()
+    val addItemUIState: LiveData<AddItemUIState> get() = _addItemUIState
+
 
     private var _getStockDataUIState: MutableLiveData<getItemsUIState> = MutableLiveData()
     val getStockDataUIState: MutableLiveData<getItemsUIState> = _getStockDataUIState
@@ -61,6 +71,30 @@ class AppViewModel(
 
     private var _cartCountUIState: MutableLiveData<Int> = MutableLiveData()
     val cartCountUIState get() = _cartCountUIState
+
+
+    fun signUpUser(signUp: SignUp) {
+        Log.d("my signup", signUp.toString())
+        viewModelScope.launch {
+            try {
+                // Call signUpUser from the repository and expect SignUpResponse
+                val res: SignUpResponse = dataRepository.signUpUser(signUp)
+
+                // Check if signup was successful
+                if (res.success) {
+                    // Update the UI state on successful signup
+                    _signUpUIState.value = SignUpAuthUIState(null, "Signup successful", res)
+                } else {
+                    // Handle signup failure
+                    _signUpUIState.value = SignUpAuthUIState("Signup failed: ${res.message}", null, null)
+                }
+            } catch (e: Exception) {
+                // Update the UI state with the error message in case of exception
+                _signUpUIState.value = SignUpAuthUIState(e.message, null, null)
+            }
+        }
+    }
+
     fun loginUser(authParams: AuthParams) {
         viewModelScope.launch {
             try {
@@ -124,6 +158,38 @@ class AppViewModel(
             }
         }
     }
+
+    // AddItems function for network request
+    fun addItems(token: String, addItemData: AddItemData) {
+        viewModelScope.launch {
+            try {
+                // Assuming the repository method has been updated to take addItemData
+                val response = dataRepository.addItems(token, addItemData)
+
+                // Update the UI state based on the response
+                if (response.success) {
+                    _addItemUIState.value = AddItemUIState(
+                        errorMessage = null,
+                        successMessage = "Item added successfully!",
+                        addItemResponse = response
+                    )
+                } else {
+                    _addItemUIState.value = AddItemUIState(
+                        errorMessage = response.message,
+                        successMessage = null,
+                        addItemResponse = null
+                    )
+                }
+            } catch (e: Exception) {
+                _addItemUIState.value = AddItemUIState(
+                    errorMessage = e.message,
+                    successMessage = null,
+                    addItemResponse = null
+                )
+            }
+        }
+    }
+
 
     fun resetPassword(
         token: String,

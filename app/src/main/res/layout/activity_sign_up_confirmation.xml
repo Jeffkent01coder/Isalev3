@@ -46,32 +46,7 @@
                 android:textSize="16sp"
                 />
             <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_marginStart="10dp"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginVertical="5dp"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Last Name:"
-                android:textStyle="bold"
-                android:textColor="@color/md_theme_primary"
-                android:textSize="16sp"
-                />
-            <TextView
-
+                android:id="@+id/firstNameEt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -96,7 +71,32 @@
                 android:textSize="16sp"
                 />
             <TextView
+                android:id="@+id/emailEt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                />
 
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginVertical="5dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address :"
+                android:textStyle="bold"
+                android:textColor="@color/md_theme_primary"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:id="@+id/addressEt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -121,7 +121,7 @@
                 android:textSize="16sp"
                 />
             <TextView
-
+                android:id="@+id/userNameEt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -146,7 +146,7 @@
                 android:textSize="16sp"
                 />
             <TextView
-
+                android:id="@+id/nationalIDEt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -171,7 +171,7 @@
                 android:textSize="16sp"
                 />
             <TextView
-
+                android:id="@+id/positionEt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -196,7 +196,7 @@
                 android:textSize="16sp"
                 />
             <TextView
-
+                android:id="@+id/businessNameEt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -221,7 +221,7 @@
                 android:textSize="16sp"
                 />
             <TextView
-
+                android:id="@+id/kraPinEt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -246,7 +246,7 @@
                 android:textSize="16sp"
                 />
             <TextView
-
+                android:id="@+id/businessEmailEt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -271,7 +271,7 @@
                 android:textSize="16sp"
                 />
             <TextView
-
+                android:id="@+id/businessAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -296,7 +296,7 @@
                 android:textSize="16sp"
                 />
             <TextView
-
+                android:id="@+id/businessPhoneEt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -321,7 +321,7 @@
                 android:textSize="16sp"
                 />
             <TextView
-
+                android:id="@+id/businessNature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -346,7 +346,7 @@
                 android:textSize="16sp"
                 />
             <TextView
-
+                android:id="@+id/noOfLicenceDevices"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -371,7 +371,7 @@
                 android:textSize="16sp"
                 />
             <TextView
-
+                android:id="@+id/licenceType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -396,7 +396,7 @@
                 android:textSize="16sp"
                 />
             <TextView
-
+                android:id="@+id/branches"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -448,6 +448,13 @@
                 app:cornerRadius="6dp"
                 app:elevation="0dp" />
         </LinearLayout>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:id="@+id/loginProgress"
+            android:layout_height="30dp"/>
 
 
     </TableLayout>

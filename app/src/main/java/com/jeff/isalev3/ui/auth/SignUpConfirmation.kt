@@ -1,21 +1,79 @@
 package com.jeff.isalev3.ui.auth
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.jeff.isalev3.R
+import androidx.lifecycle.ViewModelProvider
+import com.jeff.isalev3.Repositories.DataRepository
+import com.jeff.isalev3.Repositories.DataStoreRepository
+import com.jeff.isalev3.ViewModels.AppViewModel
+import com.jeff.isalev3.ViewModels.StateViewModelFactory
+import com.jeff.isalev3.databinding.ActivitySignUpConfirmationBinding
+import com.jeff.isalev3.models.SignUp
+import com.stanbestgroup.isalev2.Room.RoomApplication
 
 class SignUpConfirmation : AppCompatActivity() {
+    private lateinit var binding: ActivitySignUpConfirmationBinding
+    private lateinit var viewModel: AppViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivitySignUpConfirmationBinding.inflate(layoutInflater)
+        supportActionBar?.hide()
+        setContentView(binding.root)
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_sign_up_confirmation)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        viewModel = ViewModelProvider(
+            this, StateViewModelFactory(
+                DataRepository(),
+                DataStoreRepository.getInstance(applicationContext),
+                (application as RoomApplication).repository
+            )
+        )[AppViewModel::class.java]
+
+        binding.btnBack.setOnClickListener {
+            startActivity(Intent(this, Register::class.java))
         }
+
+        val signUpData = intent.getParcelableExtra<SignUp>("signUp")
+        binding.apply {
+            addressEt.text = signUpData?.address
+            branches.text = signUpData?.branch
+            businessAddress.text = signUpData?.business_address  // Updated to match new field name
+            businessEmailEt.text = signUpData?.business_email  // Updated to match new field name
+            businessNameEt.text = signUpData?.business_name  // Updated to match new field name
+            businessNature.text = signUpData?.business_nature  // Updated to match new field name
+            businessPhoneEt.text = signUpData?.business_phone  // Updated to match new field name
+            emailEt.text = signUpData?.email
+            firstNameEt.text = signUpData?.first_name  // Updated to match new field name
+            kraPinEt.text = signUpData?.kra_pin  // Updated to match new field name
+            noOfLicenceDevices.text = signUpData?.licence_count.toString()  // Updated to match new field name
+            licenceType.text = signUpData?.licence_id  // Updated to match new field name
+            nationalIDEt.text = signUpData?.nationalid
+            businessPhoneEt.text = signUpData?.phone
+            positionEt.text = signUpData?.position
+            userNameEt.text = signUpData?.username
+        }
+
+
+        binding.btnCompleteSignUp.setOnClickListener{
+            viewModel.signUpUser(signUpData!!)
+            viewModel.signUpUIState.observe(this) { state ->
+                Log.d("Register state", state.toString())
+                state.errorMessage?.let {
+                    binding.loginProgress.visibility = View.GONE
+                    Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+                }
+                state.signUpResponse?.let {
+                    binding.loginProgress.visibility = View.GONE
+                    Toast.makeText(this, "Registration successful", Toast.LENGTH_LONG).show()
+
+                }
+            }
+
+        }
+
     }
 }

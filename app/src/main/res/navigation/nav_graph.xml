@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/addNewStockFragment"
-        android:name="com.jeff.isalev3.ui.home.stock.AddNewStockFragment"
+        android:name="com.jeff.isalev3.ui.home.stock.additems.AddNewStockFragment"
         android:label="fragment_add_new_stock"
         tools:layout="@layout/fragment_add_new_stock" >
         <action

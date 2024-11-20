@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.stock.AddNewStockFragment">
+    tools:context=".ui.home.stock.additems.AddNewStockFragment">
 
     <LinearLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -99,6 +99,8 @@
                     android:background="@drawable/custom_text_field"
                     android:orientation="horizontal"
                     android:paddingStart="5dp"
+                    app:boxStrokeColor="@color/primaryTextColor"
+                    app:hintTextColor="@color/primaryTextColor"
                     android:paddingTop="2dp"
                     android:paddingEnd="5dp"
                     android:paddingBottom="2dp">
@@ -616,6 +618,30 @@
                     android:textSize="16sp"
                     app:cornerRadius="6dp"
                     app:elevation="0dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/statusMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:visibility="gone"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    app:layout_constraintVertical_bias="0.0"
+                    android:text="Display a message here"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
             </LinearLayout>
 

@@ -3,11 +3,15 @@ package com.jeff.isalev3.Repositories
 import com.jeff.isalev3.models.AuthParams
 import com.jeff.isalev3.models.GetSalesResponse
 import com.jeff.isalev3.models.LoginResponse
+import com.jeff.isalev3.models.SignUp
+import com.jeff.isalev3.models.SignUpResponse
+import com.jeff.isalev3.models.StockData
 import com.jeff.isalev3.models.getProfomaResponse
 import com.jeff.isalev3.network.RetrofitService
-import com.jeff.isalev3.models.StockData
 import com.jeff.isalev3.ui.auth.changePassword.ChangePassword
 import com.jeff.isalev3.ui.auth.changePassword.ChangePasswordRequest
+import com.jeff.isalev3.ui.home.stock.additems.model.AddItemData
+import com.jeff.isalev3.ui.home.stock.additems.model.AddItemResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -16,6 +20,12 @@ class DataRepository {
     suspend fun loginUser(authParams: AuthParams): LoginResponse {
         return withContext(Dispatchers.IO) {
             RetrofitService.retrofitService.login(authParams)
+        }
+    }
+
+    suspend fun signUpUser(signUpData: SignUp): SignUpResponse {
+        return withContext(Dispatchers.IO) {
+            RetrofitService.retrofitService.signUp(signUpData)
         }
     }
 
@@ -39,7 +49,13 @@ class DataRepository {
     }
 
     suspend fun changePassword(token: String, request: ChangePasswordRequest): ChangePassword {
-        return RetrofitService.retrofitService.changePassword("Bearer $token", request )
+        return RetrofitService.retrofitService.changePassword("Bearer $token", request)
+    }
+
+    suspend fun addItems(token: String, addItemData: AddItemData): AddItemResponse {
+        return withContext(Dispatchers.IO) {
+            RetrofitService.retrofitService.addItem("Bearer $token", addItemData)
+        }
     }
 
 
