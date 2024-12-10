@@ -1,0 +1,282 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "1e197abd15028046c8f4285554363dd6",
+    "entities": [
+      {
+        "tableName": "Items",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `item_id` INTEGER NOT NULL, `item_cd` TEXT NOT NULL, `item_cd_df` TEXT NOT NULL, `item_cls_cd` TEXT NOT NULL, `item_ty_cd` TEXT NOT NULL, `item_nm` TEXT NOT NULL, `item_std_nm` TEXT NOT NULL, `picture` TEXT, `orgn_nat_cd` TEXT NOT NULL, `pkg_unit_cd` TEXT NOT NULL, `qty_unit_cd` TEXT NOT NULL, `tax_ty_cd` TEXT NOT NULL, `btch_no` TEXT NOT NULL, `reg_bhf_id` TEXT, `bcd` TEXT NOT NULL, `dft_prc` TEXT NOT NULL, `grp_prc_l1` TEXT NOT NULL, `grp_prc_l2` TEXT NOT NULL, `grp_prc_l3` TEXT NOT NULL, `grp_prc_l4` TEXT NOT NULL, `grp_prc_l5` TEXT NOT NULL, `add_info` TEXT NOT NULL, `sfty_qty` TEXT NOT NULL, `isrc_aplcb_yn` TEXT NOT NULL, `rra_mod_yn` TEXT, `charges` INTEGER, `use_yn` TEXT NOT NULL, `current_stock` TEXT NOT NULL, `status` TEXT NOT NULL, `created_at` TEXT NOT NULL, `updated_at` TEXT NOT NULL, `deleted_at` TEXT, `item_category_id` INTEGER NOT NULL, `user_id` INTEGER NOT NULL, `business_id` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "itemId",
+            "columnName": "item_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "itemCd",
+            "columnName": "item_cd",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "itemCdDf",
+            "columnName": "item_cd_df",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "itemClsCd",
+            "columnName": "item_cls_cd",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "itemTyCd",
+            "columnName": "item_ty_cd",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "itemNm",
+            "columnName": "item_nm",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "itemStdNm",
+            "columnName": "item_std_nm",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "picture",
+            "columnName": "picture",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "orgnNatCd",
+            "columnName": "orgn_nat_cd",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pkgUnitCd",
+            "columnName": "pkg_unit_cd",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "qtyUnitCd",
+            "columnName": "qty_unit_cd",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taxTyCd",
+            "columnName": "tax_ty_cd",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "btchNo",
+            "columnName": "btch_no",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "regBhfId",
+            "columnName": "reg_bhf_id",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "bcd",
+            "columnName": "bcd",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dftPrc",
+            "columnName": "dft_prc",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "grpPrcL1",
+            "columnName": "grp_prc_l1",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "grpPrcL2",
+            "columnName": "grp_prc_l2",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "grpPrcL3",
+            "columnName": "grp_prc_l3",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "grpPrcL4",
+            "columnName": "grp_prc_l4",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "grpPrcL5",
+            "columnName": "grp_prc_l5",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "addInfo",
+            "columnName": "add_info",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sftyQty",
+            "columnName": "sfty_qty",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isrcAplcbYn",
+            "columnName": "isrc_aplcb_yn",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rraModYn",
+            "columnName": "rra_mod_yn",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "charges",
+            "columnName": "charges",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "useYn",
+            "columnName": "use_yn",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "currentStock",
+            "columnName": "current_stock",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updated_at",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "deletedAt",
+            "columnName": "deleted_at",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "itemCategoryId",
+            "columnName": "item_category_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userId",
+            "columnName": "user_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "businessId",
+            "columnName": "business_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "categories",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `category` TEXT NOT NULL, `category_id` INTEGER NOT NULL, `description` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "category",
+            "columnName": "category",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "categoryId",
+            "columnName": "category_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1e197abd15028046c8f4285554363dd6')"
+    ]
+  }
+}

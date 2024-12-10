@@ -23,8 +23,8 @@ import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
 
 object RetrofitService {
-//     private const val BASE_URL = "https://milajematrix.stanbestgroup.com/"
-      private const val BASE_URL = "https://vibraniumapi.stanbestgroup.com/"
+     private const val BASE_URL = "https://milajematrix.stanbestgroup.com/"
+//      private const val BASE_URL = "https://vibraniumapi.stanbestgroup.com/"
 
     private val okHttpClient = OkHttpClient.Builder()
         .connectTimeout(120, TimeUnit.SECONDS) // Connect timeout

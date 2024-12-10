@@ -96,7 +96,7 @@ class AddNewStockFragment : Fragment() {
             val selectedObject = parent.getItemAtPosition(position) as ItemClassification
             classificationCode = selectedObject.itemClsCd
         }
-        binding.imgAutoClassification.setOnClickListener { binding.autoClassification.showDropDown() }
+//        binding.imgAutoClassification.setOnClickListener { binding.autoClassification.showDropDown() }
 
         binding.autoProductType.onItemClickListener = AdapterView.OnItemClickListener { parent, _, position, _ ->
             val selectedObject = parent.getItemAtPosition(position) as Code
